@@ -59,6 +59,7 @@ public class ResultActivity extends AppCompatActivity {
                         .execute();
                 Document doc = Jsoup.connect(getIntent().getStringExtra("url")+response.header("Location"))
                         .cookies(response.cookies())
+                        .timeout(6000)
                         .get();
                 result = doc.select("h6").first().text();
                 Log.d("Result","result = "+result);

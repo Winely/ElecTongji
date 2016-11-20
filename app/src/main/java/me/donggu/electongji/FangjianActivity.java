@@ -72,7 +72,7 @@ public class FangjianActivity extends AppCompatActivity {
                         .post();
                 Element element = doc.select("#drfangjian").first();
                 for(Element e:element.children()){
-                    if(e.hasAttr("selected"))continue;
+                    if(e==element.child(0))continue;
                     fangjianList.add(new ListItem(e.val(),e.text()));
                 }
                 viewState = doc.select("#__VIEWSTATE").first().val();

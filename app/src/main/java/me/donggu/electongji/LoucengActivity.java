@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -77,9 +78,21 @@ public class LoucengActivity extends AppCompatActivity {
             }catch (IOException e){
                 e.printStackTrace();
             }
-            loucengAdapter = new ListIthemAdapter(
-                    LoucengActivity.this, R.layout.list_item_layout, loucengList);
-            handler.sendEmptyMessage(LOUDONG);
+            if(loucengList.isEmpty()){
+                Intent intent = new Intent(FANGJIAN);
+                intent.putExtra("viewState",viewState);
+                intent.putExtra("louceng", "");
+                intent.putExtra("url", getIntent().getStringExtra("url"));
+                intent.putExtra("xiaoqu", getIntent().getStringExtra("xiaoqu"));
+                intent.putExtra("loudong",getIntent().getStringExtra("loudong"));
+                startActivity(intent);
+                Log.d("Louceng", "没有楼层");
+            }
+            else{
+                loucengAdapter = new ListIthemAdapter(
+                        LoucengActivity.this, R.layout.list_item_layout, loucengList);
+                handler.sendEmptyMessage(LOUDONG);
+            }
         }
     };
 
