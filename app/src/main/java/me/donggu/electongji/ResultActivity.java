@@ -1,12 +1,11 @@
 package me.donggu.electongji;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -15,7 +14,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-public class ResultActivity extends Activity {
+public class ResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
